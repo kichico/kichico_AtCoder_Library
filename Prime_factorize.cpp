@@ -1,11 +1,4 @@
-﻿#include "bits/stdc++.h"
-using namespace std;
-using ll=int64_t;
-using ld=long double;
-#define MOD 1e9+7
-#define ALL(x) x.begin(),x.end()
-
-vector<pair<ll,ll>> prime_factorize(ll Num){
+﻿vector<pair<ll,ll>> prime_factorize(ll Num){
     vector<pair<ll,ll>> pr; //pair<primenumber(素数),Exponentiation(べき数)>
     vector<bool> listprime(Num);
     for(ll i=0;i<Num;++i) listprime[i]=true;
@@ -26,19 +19,3 @@ vector<pair<ll,ll>> prime_factorize(ll Num){
     return pr;
 }
 
-int solve(){
-    ll N;
-    cin>>N;
-    vector<pair<ll,ll>> pr{};
-    pr=prime_factorize(N);
-    for(ll i=0;i<pr.size();++i) cout<<pr[i].first<<"^"<<pr[i].second<<endl;
-    return 0;
-}
-
-
-int main(void){
-    std::cin.tie(nullptr);
-	std::ios_base::sync_with_stdio(false);
-	std::cout << std::fixed << std::setprecision(15);
-	solve();
-}
