@@ -2,6 +2,7 @@
 using namespace std;
 using ll=int64_t;
 using ld=long double;
+using ull=unsigned long long;
 #define ALL(x) x.begin(),x.end()
 const ll MOD=1e9+7;
 //#######################################################################
