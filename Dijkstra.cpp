@@ -1,26 +1,4 @@
-﻿#include<iostream>
-#include<iomanip>
-#include<vector>
-#include<map>
-#include<set>
-#include<algorithm>
-#include<numeric>
-#include<limits>
-#include<bitset>
-#include<functional>
-#include<type_traits>
-#include<queue>
-#include<stack>
-#include<array>
-#include<random>
-#include<utility>
-#include<cstdlib>
-#include<ctime>
-#define ALL(x) x.begin(),x.end()
-using ll=long long;
-using namespace std;
-
-struct Edge{
+﻿struct Edge{
     ll to,cost;
     Edge() {}
     Edge(ll to, ll costt=0): to(to), cost(cost) {}
