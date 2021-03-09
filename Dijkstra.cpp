@@ -19,10 +19,11 @@
 #define ALL(x) x.begin(),x.end()
 using ll=long long;
 using namespace std;
+
 struct Edge{
     ll to,cost;
     Edge() {}
-    Edge(int to, ll cost=0): to(to), cost(cost) {}
+    Edge(ll to, ll costt=0): to(to), cost(cost) {}
 };
 
 typedef pair<ll,ll> P;
@@ -34,7 +35,9 @@ struct graph{
         n=N;
         G.resize(n);
     }
-    void add_edge(ll from, ll destination, ll payment) { G[from].emplace_back(destination,payment); }
+    void add_edge(ll from, ll destination, ll cost, ll ticket) {
+        G[from].emplace_back(destination,cost,ticket); 
+    }
     pair<vector<ll>,vector<ll>> dijkstra(ll start) {
         vector<ll> dist(n,INF);
         vector<ll> path(n,-1);
@@ -65,15 +68,17 @@ struct graph{
         reverse(ALL(path));
         return path;
     }
-    void gridgraph(const vector<vector<ll>> &field, graph& gr) {
+    void gridgraph(const vector<vector<ll>> &field, graph& gr, ll ticket) {
         ll height=(ll)field.size();
         ll width=(ll)field[0].size();
         for(ll i=0;i<height;++i){
             for(ll j=0;j<width;++j){
-                if(i-1>=0) gr.add_edge(i*width+j,(i-1)*width+j,field[i-1][j]);
-                if(i+1<height) gr.add_edge(i*width+j,(i+1)*width+j,field[i+1][j]);
-                if(j-1>=0) gr.add_edge(i*width+j,i*width+j-1,field[i][j-1]);
-                if(j+1<width) gr.add_edge(i*width+j,i*width+j+1,field[i][j+1]);
+                for(ll t=0;t<ticket;++t){
+                    if(i-1>=0) gr.add_edge(i*width+j,(i-1)*width+j,field[i-1][j],ticket);
+                    if(i+1<height) gr.add_edge(i*width+j,(i+1)*width+j,field[i+1][j],ticket);
+                    if(j-1>=0) gr.add_edge(i*width+j,i*width+j-1,field[i][j-1],ticket);
+                    if(j+1<width) gr.add_edge(i*width+j,i*width+j+1,field[i][j+1],ticket);
+                }
             }
         }
     }
@@ -86,8 +91,10 @@ int main(){
     cin>>height>>width;
     graph g(height*width);
     vector<vector<ll>> field(height,vector<ll>(width,-1));
+    ll ticket;
+    cin>>ticket;
     for(ll i=0;i<height;++i) for(ll j=0;j<width;++j) cin>>field[i][j];
-    g.gridgraph(field,g);
+    g.gridgraph(field,g,ticket);
     auto d=g.dijkstra(0);
     auto path=g.getpath(d.second,17);
     cout<<d.first.back()<<endl;
