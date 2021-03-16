@@ -46,7 +46,7 @@ struct graph{
         reverse(ALL(path));
         return path;
     }
-    void gridgraph(const vector<vector<ll>> &field, graph& gr, ll ticket) {
+    void gridgraph(const vector<vector<ll>> &field, graph& gr) {
         ll height=(ll)field.size();
         ll width=(ll)field[0].size();
         for(ll i=0;i<height;++i){

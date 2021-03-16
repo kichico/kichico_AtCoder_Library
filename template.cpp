@@ -3,7 +3,11 @@ using namespace std;
 using ll=int64_t;
 using ld=long double;
 using ull=unsigned long long;
+typedef vector<vector<ll>> grid;
+typedef vector<vector<bool>> gridbool;
 #define ALL(x) x.begin(),x.end()
+#define rep(i,N) for(ll i=0;i<N;++i)
+
 const ll MOD=1e9+7;
 //#######################################################################
 vector<vector<ll>> input(ll N, ll width){
