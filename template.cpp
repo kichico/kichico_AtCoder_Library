@@ -6,7 +6,7 @@ using ull=unsigned long long;
 typedef vector<vector<ll>> grid;
 typedef vector<vector<bool>> gridbool;
 #define ALL(x) x.begin(),x.end()
-#define rep(iter,start,N) for(ll iter=start;i<N;++i)
+#define rep(iter,start,N) for(ll iter=start;iter<N;++iter)
 
 const ll MOD=1e9+7;
 const ll INF=1e18;
